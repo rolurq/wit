@@ -70,3 +70,7 @@ target/
 # Compiling results
 bin
 
+
+# Qt resources
+*_qrc.py
+
