@@ -9,7 +9,7 @@ Rectangle {
     id: delegate
     Column {
       id: wrapper
-      Image {
+      ImageViewer {
         id: image
         width: 64; height: 64
         source: modelData
