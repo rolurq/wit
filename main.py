@@ -29,7 +29,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     engine = QQmlApplicationEngine()
-    engine.load(QUrl('qrc:/qml/main.qml'))
+    engine.load('qml/main.qml')
 
     addrs = load(sys.argv[1])
     # print(addrs)
