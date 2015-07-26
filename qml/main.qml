@@ -5,6 +5,7 @@ import "ViewerCore"
 
 Window {
   visible: true
+  visibility: Window.Maximized
   title: "Wit"
   color: "#2a302d"
 
