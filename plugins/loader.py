@@ -9,25 +9,25 @@ JPG_HEADER = b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00`\x00`\x00\x00\xf
 
 
 class ImageDescriptor(QObject):
-    sourceChanged = pyqtSignal()
+    nameChanged = pyqtSignal()
 
     def __init__(self, parent=None):
         super(ImageDescriptor, self).__init__(parent)
 
-        self.__source = ''
+        self.__name = ''
 
-    @pyqtProperty(str, notify=sourceChanged)
-    def source(self):
-        return self.__source
+    @pyqtProperty(str, notify=nameChanged)
+    def name(self):
+        return self.__name
 
-    @source.setter
-    def source(self, value):
-        self.__source = value
-        self.sourceChanged.emit()
+    @name.setter
+    def name(self, value):
+        self.__name = value
+        self.nameChanged.emit()
 
 
 class ImageLoader(QObject):
-    Q_CLASSINFO('DeafaultProperty', 'images')
+    Q_CLASSINFO('DefaultProperty', 'images')
 
     def __init__(self, parent=None):
         super(ImageLoader, self).__init__(parent)
@@ -36,7 +36,7 @@ class ImageLoader(QObject):
 
     @pyqtProperty(QQmlListProperty)
     def images(self):
-        return QQmlListProperty(QObject, self, self.__images)
+        return QQmlListProperty(ImageDescriptor, self, self.__images)
 
     @pyqtSlot(str)
     def load(self, source):
@@ -47,5 +47,5 @@ class ImageLoader(QObject):
             header = os.read(fd, HEADER_SIZE)
             if header == JPG_HEADER or header[:-3] == PNG_HEADER:
                 img = ImageDescriptor(self)
-                img.source = archive
+                img.name = archive
                 self.__images.append(img)
