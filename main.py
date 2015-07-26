@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-from PyQt5.QtCore import QVariant
+from PyQt5.QtCore import QVariant, QUrl
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine
+import resources_qrc
 
 import os
 
@@ -12,7 +13,8 @@ JPG_HEADER = b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00'
 
 def load(source):
     imgs = []
-    directory = os.path.dirname(source)
+    # if dirname returns '' use the current directory
+    directory = os.path.abspath(os.path.dirname(source) or '.')
     for i in os.listdir(directory):
         archive = os.path.join(directory, i)
         if os.path.isfile(archive):
@@ -30,7 +32,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     engine = QQmlApplicationEngine()
-    engine.load('qml/main.qml')
+    engine.load(QUrl('qrc:/qml/main.qml'))
 
     addrs = load(sys.argv[1])
     # print(addrs)

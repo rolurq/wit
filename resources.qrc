@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file alias="main.qml">qml/main.qml</file>
+    </qresource>
+    <qresource prefix="/qml/ViewerCore">
+        <file alias="ImageStrip.qml">qml/ViewerCore/ImageStrip.qml</file>
+        <file alias="ImageViewer.qml">qml/ViewerCore/ImageViewer.qml</file>
+    </qresource>
+</RCC>
