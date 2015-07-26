@@ -12,7 +12,8 @@ JPG_HEADER = b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00'
 
 def load(source):
     imgs = []
-    directory = os.path.dirname(source)
+    # if dirname returns '' use the current directory
+    directory = os.path.abspath(os.path.dirname(source) or '.')
     for i in os.listdir(directory):
         archive = os.path.join(directory, i)
         if os.path.isfile(archive):
