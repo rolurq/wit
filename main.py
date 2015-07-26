@@ -8,7 +8,7 @@ import os
 
 HEADER_SIZE = 18
 PNG_HEADER = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00'
-JPG_HEADER = b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00'
+JPG_HEADER = b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01'
 
 
 def load(source):
@@ -22,7 +22,7 @@ def load(source):
 
             header = os.read(fd, HEADER_SIZE)
             # print(header)
-            if header == PNG_HEADER or header[:-3] == JPG_HEADER:
+            if header == PNG_HEADER or header[:-6] == JPG_HEADER:
                 imgs.append(archive)
             os.close(fd)
     return imgs
