@@ -12,12 +12,12 @@ Rectangle {
       ImageViewer {
         id: image
         width: 64; height: 64
-        source: modelData
+        source: 'file://' + modelData
         opacity: wrapper.PathView.isCurrentItem ? 1 : .4
 
         states: State {
           when: wrapper.PathView.isCurrentItem
-          PropertyChanges {target: viewer; source: modelData}
+          PropertyChanges {target: viewer; source: 'file://' + modelData}
         }
       }
     }
