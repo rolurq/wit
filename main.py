@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from PyQt5.QtCore import QVariant
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine
