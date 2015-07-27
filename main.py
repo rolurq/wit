@@ -34,7 +34,7 @@ if __name__ == '__main__':
     engine = QQmlApplicationEngine()
     engine.load(QUrl('qrc:/qml/main.qml'))
 
-    addrs = load(sys.argv[1])
+    addrs = load(' '.join(sys.argv[1:]))
     # print(addrs)
     context = engine.rootContext()
     context.setContextProperty("imageModel", QVariant(addrs))
