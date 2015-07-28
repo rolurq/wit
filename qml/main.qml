@@ -7,7 +7,7 @@ Window {
   visible: true
   visibility: Window.Maximized
   title: "Wit"
-  color: "#2a302d"
+  color: "#96000000"
 
   ImageStrip {
     z: 1
