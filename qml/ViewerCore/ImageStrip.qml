@@ -19,6 +19,9 @@ Rectangle {
         width: 64; height: 64
         source: 'file://' + modelData
         opacity: wrapper.PathView.isCurrentItem ? 1 : .4
+        Component.onCompleted: {
+          strip.positionViewAtIndex(sourceIndex, PathView.Beginning)
+        }
       }
     }
   }
