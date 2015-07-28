@@ -2,8 +2,11 @@ import QtQuick 2.4
 import QtQuick.Window 2.2
 
 import "ViewerCore"
+import "/js/script.js" as Script
 
 Window {
+  id: window
+
   visible: true
   visibility: Window.Maximized
   title: "Wit"
@@ -22,12 +25,17 @@ Window {
 
   Item {
     anchors.centerIn: parent
+    width: viewer.implicitWidth
+    height: viewer.implicitHeight
+
     Image {
       id: viewer
 
       transformOrigin: Item.Center
       antialiasing: true
-      scale: 300 / Math.max(sourceSize.width, sourceSize.height)
+      fillMode: Image.PreserveAspectFit
+      // scale the image to fit the screen
+      scale: Script.calculateScale(sourceSize.width, sourceSize.height)
 
       MouseArea {
         anchors.fill: parent
@@ -41,7 +49,7 @@ Window {
   }
 
   MouseArea {
-    z: -1
+    z: -1  // keep zoom/rotate area in the back of the image
     anchors.fill: parent
 
     onWheel: {
