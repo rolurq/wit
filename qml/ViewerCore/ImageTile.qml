@@ -24,10 +24,7 @@ Item {
     anchors.fill: parent
     hoverEnabled: true
     // set the strip state when a image is hovered
-    onEntered: {
-      stripHolder.state = 'ENTERED'
-      image.state = 'ENTERED'
-    }
+    onEntered: stripHolder.state = image.state = 'ENTERED'
     onExited: {
       stripHolder.state = 'EXITED'
       image.state = ''
