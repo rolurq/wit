@@ -27,8 +27,14 @@ Rectangle {
           anchors.fill: parent
           hoverEnabled: true
           // set the strip state when a image is hovered
-          onEntered: {stripHolder.state = 'ENTERED'}
-          onExited: {stripHolder.state = 'EXITED'}
+          onEntered: {
+            stripHolder.state = 'ENTERED'
+            image.state = 'ENTERED'
+          }
+          onExited: {
+            stripHolder.state = 'EXITED'
+            image.state = ''
+          }
           onClicked: {
             view.positionViewAtIndex(
               view.indexAt(wrapper.x, wrapper.y),
@@ -37,10 +43,7 @@ Rectangle {
           }
         }
 
-        states: State {
-          when: wrapper.PathView.isCurrentItem
-          PropertyChanges {target: viewer; source: 'file://' + modelData}
-        }
+        onStateChanged: if (wrapper.PathView.isCurrentItem) viewer.source = 'file://' + modelData
       }
     }
   }
