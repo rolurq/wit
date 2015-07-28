@@ -24,4 +24,31 @@ Item {
       PropertyChanges {target: photoWrapper; rotation: Math.random() * (14) - 7}
     }
   }
-} 
+
+  states: [
+    State {
+      name: 'LOAD'; when: wrapper.PathView.isCurrentItem
+      PropertyChanges {target: viewer; source: viewer.source = 'file://' + modelData}
+    },
+    State {
+      name: 'ENTERED'
+      PropertyChanges {target: image; opacity: 1}
+      PropertyChanges {target: image; scale: 2}
+    }
+  ]
+
+  transitions: [
+    Transition {
+      to: 'ENTERED'
+      reversible: true
+      NumberAnimation {
+        properties: "opacity"; duration: 200;
+        easing.type: Easing.InQuad
+      }
+      NumberAnimation {
+        properties: "scale"; duration: 100;
+        easing.type: Easing.InQuad
+      }
+    }
+  ]
+}
