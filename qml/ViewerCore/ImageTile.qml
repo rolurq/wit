@@ -5,14 +5,6 @@ Item {
   
   property alias source: originalImage.source
 
-  // Rectangle {
-  //   color: 'white'
-  //   anchors.centerIn: parent
-  //   antialiasing: true
-  //   width: originalImage.paintedWidth + 3
-  //   height: originalImage.paintedHeight + 3
-  // }
-
   Image {
     id: originalImage
     anchors.centerIn: parent
@@ -24,6 +16,31 @@ Item {
       PropertyChanges {target: photoWrapper; rotation: Math.random() * (14) - 7}
     }
   }
+
+  MouseArea {  // enables image clicking
+    id: mouseArea
+
+    cursorShape: Qt.PointingHandCursor
+    anchors.fill: parent
+    hoverEnabled: true
+    // set the strip state when a image is hovered
+    onEntered: {
+      stripHolder.state = 'ENTERED'
+      image.state = 'ENTERED'
+    }
+    onExited: {
+      stripHolder.state = 'EXITED'
+      image.state = ''
+    }
+    onClicked: {
+      strip.positionViewAtIndex(
+        strip.indexAt(wrapper.x, wrapper.y),
+        PathView.Beginning
+      )
+    }
+  }
+
+  onStateChanged: if (wrapper.PathView.isCurrentItem) viewer.source = 'file://' + modelData
 
   states: [
     State {
