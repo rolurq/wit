@@ -63,8 +63,8 @@ Item {
         easing.type: Easing.InQuad
       }
       NumberAnimation {
-        properties: "scale"; duration: 100;
-        easing.type: Easing.InQuad
+        properties: "scale"; duration: 200;
+        easing.type: Easing.InOutSine
       }
     }
   ]
