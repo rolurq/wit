@@ -14,7 +14,10 @@ Window {
 
     Image {
       id: viewer
+
       anchors.centerIn: parent
+      antialiasing: true
+      scale: 200 / Math.max(sourceSize.width, sourceSize.height)
     }
 
     ImageStrip {
@@ -25,6 +28,14 @@ Window {
         bottom: parent.bottom
         horizontalCenter: parent.horizontalCenter
         horizontalCenterOffset: -120
+      }
+    }
+
+    MouseArea {
+      anchors.fill: parent
+
+      onWheel: {
+        viewer.scale+= viewer.scale * wheel.angleDelta.y / 580;
       }
     }
   }
