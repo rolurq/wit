@@ -13,60 +13,23 @@ Rectangle {
     Column {
       id: wrapper
 
-      ImageViewer {
+      ImageTile {
         id: image
 
         width: 64; height: 64
         source: 'file://' + modelData
         opacity: wrapper.PathView.isCurrentItem ? 1 : .4
-
-        MouseArea {  // enables image clicking
-          id: mouseArea
-
-          cursorShape: Qt.PointingHandCursor
-          anchors.fill: parent
-          hoverEnabled: true
-          // set the strip state when a image is hovered
-          onEntered: {
-            stripHolder.state = 'ENTERED'
-            image.state = 'ENTERED'
-          }
-          onExited: {
-            stripHolder.state = 'EXITED'
-            image.state = ''
-          }
-          onClicked: {
-            view.positionViewAtIndex(
-              view.indexAt(wrapper.x, wrapper.y),
-              PathView.Beginning
-            )
-          }
-        }
-
-        onStateChanged: if (wrapper.PathView.isCurrentItem) viewer.source = 'file://' + modelData
       }
     }
   }
 
-  PathView {
-    id: view
+  StripView {
+    id: strip
 
     anchors.fill: parent
     delegate: delegate
     model: imageModel
-    interactive: true
-    focus: true
-    
-    path: Path {
-      // start approximately in the component middle
-      startX: 120; startY: 100
-      // create an ellipse with two quads
-      PathQuad { x: 120; y: 25; controlX: view.count*26; controlY: 75 }
-      PathQuad { x: 120; y: 100; controlX: -view.count*20; controlY: 75 }
-    }
-    
-    Keys.onLeftPressed: decrementCurrentIndex()
-    Keys.onRightPressed: incrementCurrentIndex()
+
     Keys.onSpacePressed: viewer.rotation = 0
   }
 

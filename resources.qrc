@@ -4,6 +4,7 @@
     </qresource>
     <qresource prefix="/qml/ViewerCore">
         <file alias="ImageStrip.qml">qml/ViewerCore/ImageStrip.qml</file>
-        <file alias="ImageViewer.qml">qml/ViewerCore/ImageViewer.qml</file>
+        <file alias="ImageTile.qml">qml/ViewerCore/ImageTile.qml</file>
+        <file alias="StripView.qml">qml/ViewerCore/StripView.qml</file>
     </qresource>
 </RCC>
