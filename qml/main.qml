@@ -25,6 +25,7 @@ Window {
 
   Item {
     anchors.centerIn: parent
+    // set size relative to the content to display
     width: viewer.implicitWidth
     height: viewer.implicitHeight
 
