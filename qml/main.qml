@@ -9,6 +9,17 @@ Window {
   title: "Wit"
   color: "#2a302d"
 
+  ImageStrip {
+    z: 1
+    anchors {
+      top: parent.bottom
+      topMargin: -160
+      bottom: parent.bottom
+      horizontalCenter: parent.horizontalCenter
+      horizontalCenterOffset: -120
+    }
+  }
+
   Item {
     anchors.fill: parent
 
@@ -17,26 +28,18 @@ Window {
 
       anchors.centerIn: parent
       antialiasing: true
-      scale: 200 / Math.max(sourceSize.width, sourceSize.height)
+      scale: 300 / Math.max(sourceSize.width, sourceSize.height)
     }
+  }
 
-    ImageStrip {
-      z: 1
-      anchors {
-        top: parent.bottom
-        topMargin: -150
-        bottom: parent.bottom
-        horizontalCenter: parent.horizontalCenter
-        horizontalCenterOffset: -120
-      }
-    }
+  MouseArea {
+    anchors.fill: parent
 
-    MouseArea {
-      anchors.fill: parent
-
-      onWheel: {
-        viewer.scale+= viewer.scale * wheel.angleDelta.y / 580;
-      }
+    onWheel: {
+      if (wheel.modifiers & Qt.ControlModifier)
+        viewer.rotation += wheel.angleDelta.y / 120 * 5;
+      else
+        viewer.scale += viewer.scale * wheel.angleDelta.y / 580;
     }
   }
 }
