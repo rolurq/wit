@@ -21,18 +21,27 @@ Window {
   }
 
   Item {
-    anchors.fill: parent
-
+    anchors.centerIn: parent
     Image {
       id: viewer
 
-      anchors.centerIn: parent
+      transformOrigin: Item.Center
       antialiasing: true
       scale: 300 / Math.max(sourceSize.width, sourceSize.height)
+
+      MouseArea {
+        anchors.fill: parent
+        cursorShape: Qt.OpenHandCursor
+        drag.target: viewer
+        
+        onPressed: cursorShape = Qt.ClosedHandCursor
+        onReleased: cursorShape = Qt.OpenHandCursor
+      }
     }
   }
 
   MouseArea {
+    z: -1
     anchors.fill: parent
 
     onWheel: {
