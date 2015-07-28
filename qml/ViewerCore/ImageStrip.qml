@@ -67,6 +67,7 @@ Rectangle {
     
     Keys.onLeftPressed: decrementCurrentIndex()
     Keys.onRightPressed: incrementCurrentIndex()
+    Keys.onSpacePressed: viewer.rotation = 0
   }
 
   states: [
