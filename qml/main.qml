@@ -29,7 +29,7 @@ Window {
     width: viewer.implicitWidth
     height: viewer.implicitHeight
 
-    Image {
+    AnimatedImage {
       id: viewer
 
       transformOrigin: Item.Center
