@@ -18,8 +18,8 @@ def load(source):
     # if dirname returns '' use the current directory
     directory = os.path.abspath(os.path.dirname(source) or '.')
     files = os.listdir(directory)
-    for i in range(len(files)):
-        archive = os.path.join(directory, files[i])
+    for i,f in enumerate(files):
+        archive = os.path.join(directory, f)
         if archive == source:
             index = i
         if os.path.isfile(archive):
