@@ -40,9 +40,8 @@ if __name__ == '__main__':
     engine.load(QUrl('qrc:/qml/main.qml'))
 
     addrs, index = load(' '.join(sys.argv[1:]))
-    addrs.sort()
     context = engine.rootContext()
     context.setContextProperty('sourceIndex', index)
-    context.setContextProperty('imageModel', QVariant(addrs))
+    context.setContextProperty('imageModel', QVariant(sorted(addrs)))
 
     sys.exit(app.exec_())
