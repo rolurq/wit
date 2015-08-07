@@ -28,7 +28,7 @@ Window {
     width: viewer.implicitWidth
     height: viewer.implicitHeight
 
-    Image {
+    AnimatedImage {
       id: viewer
 
       transformOrigin: Item.Center
@@ -41,7 +41,7 @@ Window {
         anchors.fill: parent
         cursorShape: Qt.OpenHandCursor
         drag.target: viewer
-        
+
         onPressed: cursorShape = Qt.ClosedHandCursor
         onReleased: cursorShape = Qt.OpenHandCursor
       }
