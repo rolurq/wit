@@ -1,0 +1,10 @@
+- [ ] Fix spaces on arguments
+- [ ] Recognize formats *(SVG, ...)*
+- [ ] Improve format recognition *(perhaps using wand)*
+- [ ] Improve visual appearance 
+  - [ ] Add image change animation
+  - [ ] Add zoom animation and rotate animations *(flick)*
+  - [ ] Add image border
+  - ...
+- [ ] Display image names
+- [ ] Add controls *(buttons, sliders, ...)* to keyboard actions *(zoom, rotate, next/prev image)*
