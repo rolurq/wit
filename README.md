@@ -1,12 +1,14 @@
 Wit
 ==
 
-<h6>Minimalistic image viewer</h6>
+Minimalistic image viewer
 
 >*Simplicity is ... wit*
 
-Features
---
-- Simple user interface
-- Album creation
-- Image sharing
+## Purpose
+Wit its intended to provide a simple image viewer with great visual appearance
+and fast execution.
+It's developed using QtQuick in order to ease GUI programming.
+
+## License
+This product is under the GPLv3 License.
