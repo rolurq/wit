@@ -18,7 +18,7 @@ def load(source):
     # if dirname returns '' use the current directory
     directory = os.path.abspath(os.path.dirname(source) or '.')
     files = os.listdir(directory)
-    for i,f in enumerate(files):
+    for i, f in enumerate(files):
         archive = os.path.join(directory, f)
         if archive == source:
             index = i
@@ -27,7 +27,8 @@ def load(source):
 
             header = os.read(fd, HEADER_SIZE)
             # print(header)
-            if PNG_HEADER in header or JPG_HEADER in header or GIF_HEADER in header:
+            if PNG_HEADER in header or JPG_HEADER in header or \
+               GIF_HEADER in header:
                 imgs.append(archive)
             os.close(fd)
     return imgs, index
