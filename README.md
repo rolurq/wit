@@ -11,4 +11,4 @@ and fast execution.
 It's developed using QtQuick in order to ease GUI programming.
 
 ## License
-This product is under the GPLv3 License.
+This product is under the MIT License.
