@@ -14,12 +14,14 @@ def load(source):
     # if dirname returns '' use the current directory
     directory = os.path.abspath(os.path.dirname(source) or '.')
     files = os.listdir(directory)
-    for i, f in enumerate(files):
+    i = 0
+    for f in files:
         archive = os.path.join(directory, f)
         if archive == source:
             index = i
         if os.path.isfile(archive) and imghdr.what(archive):
             imgs.append(archive)
+            i += 1
     return imgs, index
 
 if __name__ == '__main__':
@@ -32,6 +34,6 @@ if __name__ == '__main__':
     addrs, index = load(' '.join(sys.argv[1:]))
     context = engine.rootContext()
     context.setContextProperty('sourceIndex', index)
-    context.setContextProperty('imageModel', QVariant(sorted(addrs)))
+    context.setContextProperty('imageModel', QVariant(addrs))
 
     sys.exit(app.exec_())
