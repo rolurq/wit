@@ -5,11 +5,7 @@ from PyQt5.QtQml import QQmlApplicationEngine
 import resources_qrc
 
 import os
-
-HEADER_SIZE = 18
-PNG_HEADER = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00'
-JPG_HEADER = b'\xff\xd8\xff'
-GIF_HEADER = b'GIF89a'
+import imghdr
 
 
 def load(source):
@@ -22,15 +18,8 @@ def load(source):
         archive = os.path.join(directory, f)
         if archive == source:
             index = i
-        if os.path.isfile(archive):
-            fd = os.open(archive, os.O_RDONLY)
-
-            header = os.read(fd, HEADER_SIZE)
-            # print(header)
-            if PNG_HEADER in header or JPG_HEADER in header or \
-               GIF_HEADER in header:
-                imgs.append(archive)
-            os.close(fd)
+        if os.path.isfile(archive) and imghdr.what(archive):
+            imgs.append(archive)
     return imgs, index
 
 if __name__ == '__main__':
